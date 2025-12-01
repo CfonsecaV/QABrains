@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AutomationFramework.Base
+namespace AutomationFramework.Contexts
 {
-    internal class BasePage
+    internal class HomePageContext
     {
     }
 }

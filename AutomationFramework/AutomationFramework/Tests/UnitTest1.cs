@@ -1,4 +1,4 @@
-﻿namespace AutomationFramework
+﻿namespace AutomationFramework.Tests
 {
     public class Tests
     {

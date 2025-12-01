@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AutomationFramework.Pages
+namespace AutomationFramework.Contexts
 {
-    internal class PracticeFormPage
+    internal class FormPageContext
     {
     }
 }

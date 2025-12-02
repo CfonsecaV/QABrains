@@ -30,8 +30,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Config\" />
     <Folder Include="Reports\" />
   </ItemGroup>
+
+	<ItemGroup>
+		<None Update="Config\AppSettings.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
 </Project>

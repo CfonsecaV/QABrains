@@ -17,9 +17,9 @@ namespace AutomationFramework.Contexts
             _page = new HomePage(webDriver);
         }
         public void Open() => _page.Driver.Navigate().GoToUrl(_page.BaseUrl);
+        public bool IsSubmissionFormButtonEnabled() => _page.FormSubmission.Enabled;
         public FormPageContext ClickSubmissionFormButton()
         {
-            BrowserHelper.WaitCondition(_page.Driver, () => _page.FormSubmission.Enabled);
             _page.FormSubmission.Click();
             return new FormPageContext(_page.Driver);
         }

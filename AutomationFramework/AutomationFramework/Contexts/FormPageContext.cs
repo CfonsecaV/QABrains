@@ -17,8 +17,17 @@ namespace AutomationFramework.Contexts
 
         public void ClickSubmitButton()
         {
-            BrowserHelper.WaitCondition(_page.Driver, () => _page.FormSubmitButton.Enabled);
+            BrowserHelper.ScrollToElement(_page.Driver, _page.FormSubmitButton);
+            BrowserHelper.WaitUntil(_page.Driver, d => IsSubmitButtonEnabled());
             _page.FormSubmitButton.Click();
         }
+        public bool IsSubmitButtonEnabled() => _page.FormSubmitButton.Enabled;
+        public bool IsNameErrorMessageVisible() => _page.NameRequiredError.Displayed;
+        public bool IsEmailErrorMessageVisible() => _page.EmailRequiredError.Displayed;
+        public bool IsContactErrorMessageVisible() => _page.ContactRequiredError.Displayed;
+        public bool IsUploadErrorMessageVisible() => _page.UploadRequiredError.Displayed;
+        public bool IsColorErrorMessageVisible() => _page.ColorRequiredError.Displayed;
+        public bool IsFoodErrorMessageVisible() => _page.FoodRequiredError.Displayed;
+        public bool IsCountryErrorMessageVisible() => _page.CountryRequiredError.Displayed;
     }
 }

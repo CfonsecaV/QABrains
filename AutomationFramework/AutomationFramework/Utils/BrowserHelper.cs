@@ -9,19 +9,15 @@ namespace AutomationFramework.Utils
 {
     public class BrowserHelper
     {
-        public static void WaitCondition(IWebDriver webDriver, Func<bool> condition)
+        public static void WaitUntil(IWebDriver webDriver, Func<IWebDriver, bool> condition, int timeoutSeconds = 10)
         {
-            WebDriverWait wait = new(webDriver, TimeSpan.FromSeconds(10));
-            wait.IgnoreExceptionTypes(typeof(ElementClickInterceptedException));
-            try
-            {
-                wait.Until(d => condition());
-            }
-            catch (WebDriverTimeoutException)
-            {
-                Console.WriteLine("Element was not found in time");
-            }
-
+            WebDriverWait wait = new(webDriver, TimeSpan.FromSeconds(timeoutSeconds));
+            wait.IgnoreExceptionTypes(
+                typeof(ElementClickInterceptedException),
+                typeof(NoSuchElementException),
+                typeof(StaleElementReferenceException),
+                typeof(ElementNotInteractableException));
+            wait.Until(condition);
         }
         public static Actions GetAction(IWebDriver webDriver)
         {
@@ -34,4 +30,11 @@ namespace AutomationFramework.Utils
             string pageSource = webDriver.PageSource;
             return pageSource;
         }
+
+        public static void ScrollToElement(IWebDriver driver, IWebElement element)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
+            js.ExecuteScript("arguments[0].scrollIntoView(true);", element);
+        }
+    }
 }

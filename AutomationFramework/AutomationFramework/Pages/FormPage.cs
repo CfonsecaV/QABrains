@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AutomationFramework.Pages
 {
-    internal class FormPage
+    public class FormPage
     {
         private readonly IWebDriver _webDriver;
 
@@ -23,7 +23,7 @@ namespace AutomationFramework.Pages
         {
             _webDriver = webDriver;
         }
-
+        public IWebDriver Driver => _webDriver;
         public IWebElement FormSubmitButton => _webDriver.FindElement(formSubmitButtonLocator);
         public IWebElement NameRequiredError => _webDriver.FindElement(nameRequiredErrorLocator);
         public IWebElement EmailRequiredError => _webDriver.FindElement(emailRequiredErrorLocator);

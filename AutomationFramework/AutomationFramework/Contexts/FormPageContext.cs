@@ -17,9 +17,15 @@ namespace AutomationFramework.Contexts
 
         public void ClickSubmitButton()
         {
-            BrowserHelper.ScrollToElement(_page.Driver, _page.FormSubmitButton);
-            BrowserHelper.WaitUntil(_page.Driver, d => IsSubmitButtonEnabled());
-            _page.FormSubmitButton.Click();
+            try
+            {
+                BrowserHelper.ScrollToElement(_page.Driver, _page.FormSubmitButton);
+                _page.FormSubmitButton.Click();
+            }
+            catch (Exception)
+            {
+                BrowserHelper.JsClick(_page.Driver, _page.FormSubmitButton);
+            }            
         }
         public bool IsSubmitButtonEnabled() => _page.FormSubmitButton.Enabled;
         public bool IsNameErrorMessageVisible() => _page.NameRequiredError.Displayed;

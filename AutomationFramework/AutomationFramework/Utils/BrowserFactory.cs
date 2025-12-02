@@ -1,8 +1,9 @@
-﻿using OpenQA.Selenium;
+﻿using Microsoft.Extensions.Configuration;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Firefox;
-using Microsoft.Extensions.Configuration;
+using OpenQA.Selenium.Interactions;
 
 namespace AutomationFramework.Utils
 {
@@ -30,7 +31,7 @@ namespace AutomationFramework.Utils
         {
             ChromeOptions options = new();
             options.AddArgument("--window-size=1920,1080");
-            options.AddArgument("--headless");
+            //options.AddArgument("--headless");
             var webdriver = new ChromeDriver(options);
             return webdriver;
         }

@@ -33,8 +33,15 @@ namespace AutomationFramework.Utils
 
         public static void ScrollToElement(IWebDriver driver, IWebElement element)
         {
+            GetAction(driver).MoveToElement(element);
             IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
             js.ExecuteScript("arguments[0].scrollIntoView(true);", element);
+        }
+
+        public static void JsClick(IWebDriver driver, IWebElement element)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)(driver);
+            js.ExecuteScript("arguments[0].click();", element);
         }
     }
 }

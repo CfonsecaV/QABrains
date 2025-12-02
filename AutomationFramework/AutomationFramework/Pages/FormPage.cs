@@ -10,7 +10,7 @@ namespace AutomationFramework.Pages
     {
         private readonly IWebDriver _webDriver;
 
-        private readonly By formSubmitButtonLocator = By.CssSelector("[type='submit']");
+        private readonly By formSubmitButtonLocator = By.XPath("//button[@type='submit'][contains(., 'Submit')]");
         private readonly By nameRequiredErrorLocator = By.XPath("//p[text()='Name is a required field']");
         private readonly By emailRequiredErrorLocator = By.XPath("//p[text()='Email is a required field']");
         private readonly By contactRequiredErrorLocator = By.XPath("//p[text()='Contact is a required field']");

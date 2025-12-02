@@ -11,11 +11,10 @@ namespace AutomationFramework.Tests
         {
             BrowserHelper.WaitUntil(_driver, d => _homeContext.IsSubmissionFormButtonEnabled());
             FormPageContext formPage = _homeContext.ClickSubmissionFormButton();
-            Assert.That(formPage.IsSubmitButtonEnabled, Is.True);
             BrowserHelper.WaitUntil(_driver, d => formPage.IsSubmitButtonEnabled());
             formPage.ClickSubmitButton();
             BrowserHelper.WaitUntil(_driver, d => formPage.IsNameErrorMessageVisible());
-            /*Assert.Multiple(() =>
+            Assert.Multiple(() =>
             {
                 Assert.That(formPage.IsEmailErrorMessageVisible, Is.True, "Email error message missing");
                 Assert.That(formPage.IsContactErrorMessageVisible, Is.True, "Contact error message missing");
@@ -23,7 +22,7 @@ namespace AutomationFramework.Tests
                 Assert.That(formPage.IsColorErrorMessageVisible, Is.True, "Color error message missing");
                 Assert.That(formPage.IsFoodErrorMessageVisible, Is.True, "Food error message missing");
                 Assert.That(formPage.IsCountryErrorMessageVisible, Is.True, "Country error message missing");
-            });*/
+            });
         }
     }
 }
